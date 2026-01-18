@@ -1,3 +1,4 @@
+import "./config/queue";
 import app from "./app";
 import { env } from "./config/env";
 import { testConnection } from "./config/db";

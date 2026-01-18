@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { pool } from "../config/db";
+import { emailQueue } from "../config/queue";
 
 const router = Router();
 
@@ -20,6 +21,14 @@ router.post("/schedule", async (req, res) => {
     const values = [sender_email, recipient_email, subject || "", body || "", scheduled_at];
 
     const result = await pool.query(query, values);
+    // Schedule the job in BullMQ
+    await emailQueue.add(
+        "sendEmail", 
+        { emailId: result.rows[0].id }, 
+        { delay: new Date(scheduled_at).getTime() - Date.now() } // delay in milliseconds
+    );
+  
+    
 
     res.status(201).json({ message: "Email scheduled", email: result.rows[0] });
   } catch (err) {
