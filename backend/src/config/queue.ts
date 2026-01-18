@@ -47,5 +47,11 @@ export const emailWorker = new Worker(
       [emailId]
     );
   },
-  { connection: connectionOptions }
+  { connection: connectionOptions,
+    concurrency: 1, // ensures emails are sent one at a time
+    limiter: {
+      max: Number(process.env.MAX_EMAILS_PER_HOUR) || 10, // default 10 if not set
+      duration: 3600000, // 1 hour in ms
+ },
+}
 );
