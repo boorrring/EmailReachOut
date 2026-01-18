@@ -38,3 +38,42 @@ router.post("/schedule", async (req, res) => {
 });
 
 export default router;
+
+// GET /emails/scheduled
+router.get("/scheduled", async (_req, res) => {
+    try {
+      const result = await pool.query(
+        `
+        SELECT id, sender_email, recipient_email, subject, scheduled_at, status
+        FROM emails
+        WHERE status = 'scheduled'
+        ORDER BY scheduled_at ASC
+        `
+      );
+  
+      res.json(result.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+  
+  // GET /emails/sent
+  router.get("/sent", async (_req, res) => {
+    try {
+      const result = await pool.query(
+        `
+        SELECT id, sender_email, recipient_email, subject, sent_at, status
+        FROM emails
+        WHERE status = 'sent'
+        ORDER BY sent_at DESC
+        `
+      );
+  
+      res.json(result.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+  
