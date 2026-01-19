@@ -1,7 +1,7 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import { User } from "./types/auth";
-import { useAuth } from "./auth/AuthContext";
+import { User } from "../types/auth";
+import { useAuth } from "../auth/AuthContext";
 
 interface GoogleJwtPayload {
   name: string;

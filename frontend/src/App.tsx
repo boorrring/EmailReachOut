@@ -1,21 +1,10 @@
-import Login from "./Login";
 import { useAuth } from "./auth/AuthContext";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
-const App = () => {
-  const { user, logout } = useAuth();
-
-  if (!user) {
-    return <Login />;
-  }
-
-  return (
-    <div style={{ padding: 40 }}>
-      <img src={user.picture} width={60} />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <button onClick={logout}>Logout</button>
-    </div>
-  );
+const AppContent = () => {
+  const { user } = useAuth();
+  return user ? <Dashboard /> : <Login />;
 };
 
-export default App;
+export default AppContent;
