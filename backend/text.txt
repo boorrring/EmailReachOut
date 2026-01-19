@@ -1,3 +1,6 @@
+nvm use 18
+
+
 docker start reachinbox-postgres
 docker start reachinbox-redis
 cd backend
