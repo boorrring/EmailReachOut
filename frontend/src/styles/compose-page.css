@@ -1,0 +1,145 @@
+.composePage {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 18px 22px;
+}
+
+.composeTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.composeTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.sendBtn {
+  border: 1px solid #22c55e;
+  color: #16a34a;
+  background: #ffffff;
+  border-radius: 999px;
+  height: 30px;
+  padding: 0 14px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.sendBtn:hover {
+  background: var(--green-100);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.label {
+  font-size: 12px;
+  color: #111827;
+}
+
+.input {
+  height: 32px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: #111827;
+}
+
+.chipRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #22c55e;
+  color: #16a34a;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+}
+
+.chipMore {
+  border: 1px solid #22c55e;
+  background: var(--green-100);
+  color: #16a34a;
+}
+
+.uploadLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #16a34a;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.miniRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 0 14px;
+}
+
+.miniField {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.miniInput {
+  width: 46px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.editor {
+  margin-top: 10px;
+  border: 1px solid #f3f4f6;
+  border-radius: 10px;
+  background: #fafafa;
+  min-height: 360px;
+  padding: 14px;
+}
+
+.editorPlaceholder {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.attachment {
+  margin-top: 14px;
+  width: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.attachment img {
+  width: 100%;
+  display: block;
+}
+

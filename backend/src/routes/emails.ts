@@ -76,4 +76,28 @@ router.get("/scheduled", async (_req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   });
+
+  // GET /emails/:id - Get full email details including body
+  router.get("/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const result = await pool.query(
+        `
+        SELECT id, sender_email, recipient_email, subject, body, scheduled_at, sent_at, status, created_at
+        FROM emails
+        WHERE id = $1
+        `,
+        [id]
+      );
+
+      if (result.rows.length === 0) {
+        return res.status(404).json({ error: "Email not found" });
+      }
+
+      res.json(result.rows[0]);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
   
