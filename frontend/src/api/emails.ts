@@ -61,8 +61,6 @@ export type EmailDetail = {
   sent_at: string | null;
   status: EmailStatus;
   created_at: string;
-};
-
-export async function fetchEmailDetail(id: number) {
+};export async function fetchEmailDetail(id: number) {
   return apiFetch<EmailDetail>(`/emails/${id}`);
 }
