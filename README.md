@@ -42,6 +42,27 @@ Prerequisites
 - npm
 - Docker (recommended for Postgres and Redis)
 
+If you don't yet have Postgres and Redis containers created, create them with these commands (they will be named so you can later use `docker start`):
+
+```bash
+# Create Postgres container (named reachinbox-postgres)
+docker run -d \
+  --name reachinbox-postgres \
+  -e POSTGRES_USER=reachuser \
+  -e POSTGRES_PASSWORD=reachpass \
+  -e POSTGRES_DB=reachinbox \
+  -p 5432:5432 \
+  -v reachinbox-postgres-data:/var/lib/postgresql/data \
+  postgres:15
+
+# Create Redis container (named reachinbox-redis)
+docker run -d \
+  --name reachinbox-redis \
+  -p 6379:6379 \
+  -v reachinbox-redis-data:/data \
+  redis:7
+```
+
 If you already created Docker containers for Postgres and Redis (see suggested docker-compose), you can start them quickly:
 
 ```bash
@@ -217,7 +238,3 @@ Key files
 ## License
 
 This repository is provided for evaluation and educational purposes. No license is specified.
-
----
-
-For changes or questions, open an issue or contact the repository owner.
